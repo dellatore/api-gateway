@@ -12,9 +12,10 @@ public class ApiGatewayConfiguration {
     public RouteLocator gatewayRouter(RouteLocatorBuilder builder) {
 
         return builder.routes()
-                .route(p -> p.path("/get")
-                        .filters(f -> f.addRequestHeader("Hello", "World"))
-                        .uri("http://httpbin.org:80"))
+                .route(p -> p.path("/book-service/**")
+                        .uri("lb://book-service"))
+                .route(p -> p.path("/exchange-service/**")
+                        .uri("lb://exchange-service"))
                 .build();
     }
 }
