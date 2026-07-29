@@ -1,3 +1,13 @@
+server:
+  port: 8765
 spring:
   application:
     name: api-gateway
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true #habilitando Gateway Locator
+              lower-case-service-id: true #habilitando o nome do eureka minusculo
